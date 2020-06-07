@@ -87,6 +87,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             }
         }
 
+        // opties in de tray icon optie menu
         private void sluitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -94,7 +95,14 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         private void optiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Load.
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
+        }
+
+        private void overToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
         }
     }
 }
