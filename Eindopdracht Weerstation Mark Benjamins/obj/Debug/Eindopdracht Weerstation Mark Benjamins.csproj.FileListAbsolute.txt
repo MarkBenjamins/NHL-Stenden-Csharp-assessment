@@ -1,0 +1,12 @@
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Eindopdracht Weerstation Mark Benjamins.exe.config
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Eindopdracht Weerstation Mark Benjamins.exe
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Eindopdracht Weerstation Mark Benjamins.pdb
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.csprojAssemblyReference.cache
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht_Weerstation_Mark_Benjamins.Properties.Resources.resources
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.csproj.GenerateResource.cache
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.exe
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.pdb
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht_Weerstation_Mark_Benjamins.Form1.resources
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht_Weerstation_Mark_Benjamins.SplashScreen.resources
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht_Weerstation_Mark_Benjamins.About.resources
