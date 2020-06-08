@@ -68,11 +68,6 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             WindowState = FormWindowState.Normal;
         }
 
-        private void huidigeTemperatuurToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -88,21 +83,29 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
         }
 
         // opties in de tray icon optie menu
-        private void sluitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void huidigeTemperatuurToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // dispaly temperatuur van het moment
         }
-
-        private void optiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
-        }
-
         private void overToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About about = new About();
             about.ShowDialog();
+        }
+        private void optiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*Form1 form1 = new Form1();
+            form1.ShowDialog();*/
+
+            // go to form1 optie menu
+        }
+        private void sluitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // minemize of wel is closed open
         }
     }
 }
