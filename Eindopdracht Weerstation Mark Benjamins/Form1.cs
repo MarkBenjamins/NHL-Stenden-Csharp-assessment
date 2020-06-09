@@ -28,6 +28,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
             ShowInTaskbar = true;
 
+
         }
 
         public void startSplashScreen()
@@ -94,18 +95,47 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
         }
         private void optiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*Form1 form1 = new Form1();
-            form1.ShowDialog();*/
-
             // go to form1 optie menu
+            Visible = true;
+            tabControl1.SelectedIndex = 2;
         }
+
         private void sluitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // sluit de applicatie
+            Environment.Exit(1);
         }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // minemize of wel is closed open
+            Visible = true;
+        }
+
+        private void Actueel_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Visible = false;
+        }
+
+        private void Opties_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

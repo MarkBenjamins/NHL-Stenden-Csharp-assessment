@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Actueel = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             this.tabControl1.Controls.Add(this.Actueel);
             this.tabControl1.Controls.Add(this.Trend);
             this.tabControl1.Controls.Add(this.Opties);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tabControl1.Location = new System.Drawing.Point(-2, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -87,6 +88,7 @@
             // 
             // Actueel
             // 
+            this.Actueel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Actueel.Controls.Add(this.label8);
             this.Actueel.Controls.Add(this.label3);
             this.Actueel.Controls.Add(this.label2);
@@ -98,7 +100,7 @@
             this.Actueel.Size = new System.Drawing.Size(1084, 571);
             this.Actueel.TabIndex = 0;
             this.Actueel.Text = "Actueel";
-            this.Actueel.UseVisualStyleBackColor = true;
+            this.Actueel.Click += new System.EventHandler(this.Actueel_Click_1);
             // 
             // label8
             // 
@@ -144,9 +146,11 @@
             this.pictureBox1.Size = new System.Drawing.Size(327, 208);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Trend
             // 
+            this.Trend.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Trend.Controls.Add(this.chart1);
             this.Trend.Controls.Add(this.pictureBox2);
             this.Trend.Location = new System.Drawing.Point(4, 25);
@@ -155,21 +159,20 @@
             this.Trend.Size = new System.Drawing.Size(1084, 571);
             this.Trend.TabIndex = 1;
             this.Trend.Text = "Trend";
-            this.Trend.UseVisualStyleBackColor = true;
             this.Trend.Click += new System.EventHandler(this.Trend_Click);
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(394, 127);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(646, 388);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -185,6 +188,7 @@
             // 
             // Opties
             // 
+            this.Opties.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Opties.Controls.Add(this.label7);
             this.Opties.Controls.Add(this.textBox2);
             this.Opties.Controls.Add(this.radioButton2);
@@ -200,7 +204,7 @@
             this.Opties.Size = new System.Drawing.Size(1084, 571);
             this.Opties.TabIndex = 2;
             this.Opties.Text = "Opties";
-            this.Opties.UseVisualStyleBackColor = true;
+            this.Opties.Click += new System.EventHandler(this.Opties_Click);
             // 
             // label7
             // 
@@ -289,7 +293,7 @@
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "Weerstation Mark";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
@@ -303,7 +307,7 @@
             this.openToolStripMenuItem,
             this.sluitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 152);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 124);
             // 
             // huidigeTemperatuurToolStripMenuItem
             // 
@@ -344,12 +348,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1091, 602);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weerstation van Mark Benjamins";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.tabControl1.ResumeLayout(false);
             this.Actueel.ResumeLayout(false);
             this.Actueel.PerformLayout();
