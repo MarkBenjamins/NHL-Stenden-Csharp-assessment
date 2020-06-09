@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Actueel = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
@@ -80,10 +80,10 @@
             this.tabControl1.Controls.Add(this.Trend);
             this.tabControl1.Controls.Add(this.Opties);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tabControl1.Location = new System.Drawing.Point(-2, -1);
+            this.tabControl1.Location = new System.Drawing.Point(-5, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1092, 600);
+            this.tabControl1.Size = new System.Drawing.Size(1109, 609);
             this.tabControl1.TabIndex = 0;
             // 
             // Actueel
@@ -97,7 +97,7 @@
             this.Actueel.Location = new System.Drawing.Point(4, 25);
             this.Actueel.Name = "Actueel";
             this.Actueel.Padding = new System.Windows.Forms.Padding(3);
-            this.Actueel.Size = new System.Drawing.Size(1084, 571);
+            this.Actueel.Size = new System.Drawing.Size(1101, 580);
             this.Actueel.TabIndex = 0;
             this.Actueel.Text = "Actueel";
             this.Actueel.Click += new System.EventHandler(this.Actueel_Click_1);
@@ -156,23 +156,23 @@
             this.Trend.Location = new System.Drawing.Point(4, 25);
             this.Trend.Name = "Trend";
             this.Trend.Padding = new System.Windows.Forms.Padding(3);
-            this.Trend.Size = new System.Drawing.Size(1084, 571);
+            this.Trend.Size = new System.Drawing.Size(1101, 580);
             this.Trend.TabIndex = 1;
             this.Trend.Text = "Trend";
             this.Trend.Click += new System.EventHandler(this.Trend_Click);
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            chartArea7.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chart1.Legends.Add(legend7);
             this.chart1.Location = new System.Drawing.Point(394, 127);
             this.chart1.Name = "chart1";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chart1.Series.Add(series7);
             this.chart1.Size = new System.Drawing.Size(646, 388);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -201,7 +201,7 @@
             this.Opties.Location = new System.Drawing.Point(4, 25);
             this.Opties.Name = "Opties";
             this.Opties.Padding = new System.Windows.Forms.Padding(3);
-            this.Opties.Size = new System.Drawing.Size(1084, 571);
+            this.Opties.Size = new System.Drawing.Size(1101, 580);
             this.Opties.TabIndex = 2;
             this.Opties.Text = "Opties";
             this.Opties.Click += new System.EventHandler(this.Opties_Click);
