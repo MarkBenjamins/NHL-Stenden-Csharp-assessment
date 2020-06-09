@@ -27,8 +27,6 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             t.Abort();
 
             ShowInTaskbar = true;
-
-
         }
 
         public void startSplashScreen()

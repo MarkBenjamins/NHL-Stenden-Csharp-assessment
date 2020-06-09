@@ -1,0 +1,58 @@
+1. Programma eisen
+• Het programma kan een web service ‘consumeren’.
+• Het programma kan de gegevens opslaan van maximaal 5 dagen in een database (MySQL of Microsoft SQL Server).
+• Het programma kan een grafiek weergeven met trendgegevens.
+X• Het programma moet zichtbaar zijn in de (Quick Launch) toolbar.
+X• Het programma bevat een contextmenu.
+X• Het programma kan alleen gesloten worden via het contextmenu.
+X• Bij starten toont het programma een ‘splashscreen’.
+X• Het programma bevat een ‘About-box’.
+• Het programma kan automatisch verversen.
+
+2. Specificaties
+X - Voor het splashscreen en de iconen mag je gebruik maken van eigen afbeeldingen. De applicatie is 450 bij 375 pixels. De applicatie bevat een extra venster: de ‘About-box’.
+- Gebruik de API van Open Weather Map of de Yahoo Weather API.
+- Hierbij moet het mogelijk zijn om via de applicatie een andere plaatsnaam in te vullen.
+- De applicatie heeft een default interval van 60 seconden en een default plaatsnaam (bijvoorbeeld Emmen), welke bij het starten van de applicatie wordt meegegeven.
+
+Het uitlezen van de web service gebeurt periodiek en kan worden ingesteld via de opties. Bij elke verversing van de gegevens dienen deze gegevens (temperatuur, plaats, tijdstip) te worden opgeslagen in de database. Het periodiek uitlezen mag via een thread of timer.
+
+2.1 Interface
+De applicatie bevat 3 tabs:
+• Actueel
+	- Gegevens over locatie, 
+	- weersomstandigheden 
+	- icoon
+	- timestamp vanlaatste updatemoment (door applicatie, niet van web service).
+
+• Trend
+	- Trend van temperatuur (gemiddelde van gemeten waarden voor een dag) voor de opgegeven plaats van 5 dagen.
+
+• Opties
+	- Instellen interval voor uitlezen web service en plaatsnaam.
+
+
+2.2 Contextmenu
+Het contextmenu bevat de volgende opties:
+X • Over… Toont de ‘About-box’.
+X • Verversen… Haal de gegevens van de web service nogmaals op en verwerk deze.
+X • Opties… Toont de Opties tab.
+X • Openen… Open de applicatie indien geminimaliseerd.
+X • Sluiten Sluit het programma af.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
