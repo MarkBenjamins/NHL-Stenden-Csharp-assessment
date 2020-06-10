@@ -10,15 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using Newtonsoft.Json;
-
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Timers;
 
 namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
-
     public partial class Form1 : Form
     {
         //const string APPID
-        string cityName = "Emmen,nl";
+        string cityName = "Emmen";
+
+        int interval = 60;
 
         public Form1()
         {
@@ -30,11 +32,21 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             // load defauld form
             InitializeComponent();
 
+            // laad icon in taskbar
+            ShowInTaskbar = true;
+
+            // laat de weersvoorspelling
+            GetWeather(cityName);
+
+            // start timer interval
+            timer1.Interval = interval * 1000;
+            // stelt input gelijk aan de var
+            inputInterval.Text = string.Format("{0}", interval);
+
+            inputPlaats.Text = string.Format("{0}", cityName);
+
             //stop splash screen
             t.Abort();
-
-            ShowInTaskbar = true;
-            GetWeather(cityName);
         }
 
         public void startSplashScreen()
@@ -51,17 +63,39 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                 var Result = JsonConvert.DeserializeObject<WeerInfo.Root>(JSon);
                 WeerInfo.Root output = Result;
                 string WindDir = GetWindDirection(output.wind.deg);
+                var updateTime = DateTime.Now;
+
+                double Temp = 0.0;
+                string Symbol = "";
+                if (C.Checked == true)
+                {
+                    Temp = output.main.temp;
+                    Symbol = "°C";
+                }
+                else if (F.Checked == true)
+                {
+                    Temp = output.main.temp * 1.8 + 32;
+                    Symbol = "°F";
+                }
+                else
+                {
+                    Temp = 404;
+                    Symbol = "Error";
+                }
 
                 plaats.Text = string.Format("{0}, {1}", output.name, output.sys.country);
-                Temp.Text = string.Format("Temperatuur: {0} ℃", output.main.temp);
+                Tempera.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
                 Luchtvochtigheid.Text = string.Format("Luchtvochtigheid: {0} %", output.main.humidity);
                 Wind.Text = string.Format("Wind: {0} met {1} Km/h", WindDir, output.wind.speed);
-                huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} ℃", output.main.temp);
+                huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
+                time.Text = string.Format("[Last update] {0:HH:mm:ss}", updateTime);
             }
         }
 
-        private string GetWindDirection(double deg)
+
+private string GetWindDirection(double deg)
         {
+            // bepaald de output van de windrichting
             string WindString = "";
             if (deg >= 336.5 && deg < 22.5)
             {
@@ -98,32 +132,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             return WindString;
         }
 
-        private void Actueel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Trend_Click(object sender, EventArgs e)
-        {
-
-        }
-
         // icon rechts onder in (tray icon)
-        private void Form1_load(object sender, EventArgs e)
-        {
-            notifyIcon1.BalloonTipTitle = "Weer applicatie C#";
-            notifyIcon1.BalloonTipText = "Weer applicatie gestart";
-            notifyIcon1.Text = "Weer applicatie C#";
-        }
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
@@ -131,27 +140,10 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             WindowState = FormWindowState.Normal;
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
-            }
-            else if (FormWindowState.Normal == this.WindowState)
-            {
-                notifyIcon1.Visible = false;
-            }
-        }
-
         // opties in de tray icon optie menu
-        private void huidigeTemperatuurToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // dispaly temperatuur van het moment
-        }
         private void overToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // laat de about form in
             About about = new About();
             about.ShowDialog();
         }
@@ -170,57 +162,36 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // minemize of wel is closed open
+            // open form 1
             Visible = true;
-        }
-
-        private void Actueel_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // als je op X drukt sluit de applicatie maar hij blijft aan staan.
             e.Cancel = true;
             Visible = false;
         }
 
+        private void verversenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetWeather(cityName);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cityName = inputPlaats.Text;
+            interval = int.Parse(inputInterval.Text);
+            GetWeather(cityName);
+            tabControl1.SelectedIndex = 0;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetWeather(cityName);
+        }
+
         private void Opties_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
         {
 
         }
