@@ -17,10 +17,8 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
     public partial class Form1 : Form
     {
-        //const string APPID
-        string cityName = "Emmen";
-
         int interval = 60;
+        string cityName = "Emmen";
 
         public Form1()
         {
@@ -40,9 +38,10 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
             // start timer interval
             timer1.Interval = interval * 1000;
+
             // stelt input gelijk aan de var
             inputInterval.Text = string.Format("{0}", interval);
-
+            // steld city name gelijk aan de var
             inputPlaats.Text = string.Format("{0}", cityName);
 
             //stop splash screen
@@ -87,13 +86,13 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                 Tempera.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
                 Luchtvochtigheid.Text = string.Format("Luchtvochtigheid: {0} %", output.main.humidity);
                 Wind.Text = string.Format("Wind: {0} met {1} Km/h", WindDir, output.wind.speed);
-                huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
                 time.Text = string.Format("[Last update] {0:HH:mm:ss}", updateTime);
+                timer1.Interval = interval * 1000;
+                huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
             }
         }
 
-
-private string GetWindDirection(double deg)
+        private string GetWindDirection(double deg)
         {
             // bepaald de output van de windrichting
             string WindString = "";
@@ -180,8 +179,8 @@ private string GetWindDirection(double deg)
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cityName = inputPlaats.Text;
-            interval = int.Parse(inputInterval.Text);
+            this.cityName = inputPlaats.Text;
+            this.interval = int.Parse(inputInterval.Text);
             GetWeather(cityName);
             tabControl1.SelectedIndex = 0;
         }
@@ -189,11 +188,6 @@ private string GetWindDirection(double deg)
         private void timer1_Tick(object sender, EventArgs e)
         {
             GetWeather(cityName);
-        }
-
-        private void Opties_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
