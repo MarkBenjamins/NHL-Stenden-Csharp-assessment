@@ -26,5 +26,10 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

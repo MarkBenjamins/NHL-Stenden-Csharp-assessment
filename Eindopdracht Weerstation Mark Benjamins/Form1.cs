@@ -8,11 +8,18 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using Newtonsoft.Json;
+
 
 namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
+
     public partial class Form1 : Form
     {
+        //const string APPID
+        string cityName = "Emmen,nl";
+
         public Form1()
         {
             // splash screen
@@ -27,11 +34,68 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             t.Abort();
 
             ShowInTaskbar = true;
+            GetWeather(cityName);
         }
 
         public void startSplashScreen()
         {
             Application.Run(new SplashScreen());
+        }
+
+        void GetWeather(string city)
+        {
+            using (WebClient web = new WebClient())
+            {
+                string Url = string.Format("http://api.openweathermap.org/data/2.5/weather?q={0}&appid=379ed7569bbd526bc8cd08d144c26fd7&units=metric&cnt=6", city);
+                var JSon = web.DownloadString(Url);
+                var Result = JsonConvert.DeserializeObject<WeerInfo.Root>(JSon);
+                WeerInfo.Root output = Result;
+                string WindDir = GetWindDirection(output.wind.deg);
+
+                plaats.Text = string.Format("{0}, {1}", output.name, output.sys.country);
+                Temp.Text = string.Format("Temperatuur: {0} ℃", output.main.temp);
+                Luchtvochtigheid.Text = string.Format("Luchtvochtigheid: {0} %", output.main.humidity);
+                Wind.Text = string.Format("Wind: {0} met {1} Km/h", WindDir, output.wind.speed);
+                huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} ℃", output.main.temp);
+            }
+        }
+
+        private string GetWindDirection(double deg)
+        {
+            string WindString = "";
+            if (deg >= 336.5 && deg < 22.5)
+            {
+                WindString += "Noorderwind";
+            }
+            else if (deg >= 22.5 && deg < 67.5)
+            {
+                WindString += "Noordoosterwind";
+            }
+            else if (deg >= 67.5 && deg < 112.5)
+            {
+                WindString += "Oosterwind";
+            }
+            else if (deg >= 112.5 && deg < 157.5)
+            {
+                WindString += "Zuidoosterwind";
+            }
+            else if (deg >= 157.5 && deg < 202.5)
+            {
+                WindString += "Zuiderwind";
+            }
+            else if (deg >= 202.5 && deg < 247.5)
+            {
+                WindString += "Zuidwesterwind";
+            }
+            else if (deg >= 247.5 && deg < 292.5)
+            {
+                WindString += "Westerwind";
+            }
+            else
+            {
+                WindString += "Noordwesterwind";
+            }
+            return WindString;
         }
 
         private void Actueel_Click(object sender, EventArgs e)
@@ -132,6 +196,31 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
         }
 
         private void Opties_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }

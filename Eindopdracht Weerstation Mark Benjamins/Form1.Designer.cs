@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Actueel = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Wind = new System.Windows.Forms.Label();
+            this.Luchtvochtigheid = new System.Windows.Forms.Label();
+            this.Temp = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Trend = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -60,6 +60,7 @@
             this.optiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sluitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.plaats = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Actueel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,10 +90,11 @@
             // Actueel
             // 
             this.Actueel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Actueel.Controls.Add(this.plaats);
             this.Actueel.Controls.Add(this.label8);
-            this.Actueel.Controls.Add(this.label3);
-            this.Actueel.Controls.Add(this.label2);
-            this.Actueel.Controls.Add(this.label1);
+            this.Actueel.Controls.Add(this.Wind);
+            this.Actueel.Controls.Add(this.Luchtvochtigheid);
+            this.Actueel.Controls.Add(this.Temp);
             this.Actueel.Controls.Add(this.pictureBox1);
             this.Actueel.Location = new System.Drawing.Point(4, 25);
             this.Actueel.Name = "Actueel";
@@ -105,38 +107,41 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(791, 504);
+            this.label8.Location = new System.Drawing.Point(317, 439);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(105, 17);
             this.label8.TabIndex = 9;
             this.label8.Text = "[ Last Update ] ";
             // 
-            // label3
+            // Wind
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 324);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Wind : ";
+            this.Wind.AutoSize = true;
+            this.Wind.Location = new System.Drawing.Point(10, 360);
+            this.Wind.Name = "Wind";
+            this.Wind.Size = new System.Drawing.Size(52, 17);
+            this.Wind.TabIndex = 8;
+            this.Wind.Text = "Wind : ";
+            this.Wind.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label2
+            // Luchtvochtigheid
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 286);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Luchtvochtigheid : ";
+            this.Luchtvochtigheid.AutoSize = true;
+            this.Luchtvochtigheid.Location = new System.Drawing.Point(10, 315);
+            this.Luchtvochtigheid.Name = "Luchtvochtigheid";
+            this.Luchtvochtigheid.Size = new System.Drawing.Size(127, 17);
+            this.Luchtvochtigheid.TabIndex = 7;
+            this.Luchtvochtigheid.Text = "Luchtvochtigheid : ";
+            this.Luchtvochtigheid.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label1
+            // Temp
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 234);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Temperatuur : ";
+            this.Temp.AutoSize = true;
+            this.Temp.Location = new System.Drawing.Point(10, 273);
+            this.Temp.Name = "Temp";
+            this.Temp.Size = new System.Drawing.Size(102, 17);
+            this.Temp.TabIndex = 6;
+            this.Temp.Text = "Temperatuur : ";
+            this.Temp.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -163,16 +168,16 @@
             // 
             // chart1
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(394, 127);
             this.chart1.Name = "chart1";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart1.Series.Add(series7);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(646, 388);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -222,10 +227,12 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(352, 22);
             this.textBox2.TabIndex = 9;
+            this.textBox2.Text = "60";
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
             this.radioButton2.Location = new System.Drawing.Point(502, 348);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(38, 21);
@@ -233,6 +240,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "C";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -241,7 +249,6 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(37, 21);
             this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "F";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -279,6 +286,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(352, 22);
             this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Emmen";
             // 
             // pictureBox3
             // 
@@ -344,6 +352,16 @@
             this.sluitToolStripMenuItem.Text = "Sluit...";
             this.sluitToolStripMenuItem.Click += new System.EventHandler(this.sluitToolStripMenuItem_Click);
             // 
+            // plaats
+            // 
+            this.plaats.AutoSize = true;
+            this.plaats.Location = new System.Drawing.Point(10, 231);
+            this.plaats.Name = "plaats";
+            this.plaats.Size = new System.Drawing.Size(47, 17);
+            this.plaats.TabIndex = 10;
+            this.plaats.Text = "Plaats";
+            this.plaats.Click += new System.EventHandler(this.label9_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -381,9 +399,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Wind;
+        private System.Windows.Forms.Label Luchtvochtigheid;
+        private System.Windows.Forms.Label Temp;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -401,6 +419,7 @@
         private System.Windows.Forms.ToolStripMenuItem optiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sluitToolStripMenuItem;
+        private System.Windows.Forms.Label plaats;
     }
 }
 

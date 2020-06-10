@@ -22,3 +22,6 @@ C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdra
 C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.csproj.CoreCompileInputs.cache
 C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.exe
 C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.pdb
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Newtonsoft.Json.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Newtonsoft.Json.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.csproj.CopyComplete
