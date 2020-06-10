@@ -48,9 +48,6 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             public main main { get; set; }
             public List<weather> weatherList { get; set; }
             public coord coord { get; set; }
-
-
-
         }
     }
 }

@@ -35,6 +35,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Actueel = new System.Windows.Forms.TabPage();
+            this.Voorspelling = new System.Windows.Forms.Label();
             this.plaats = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.Wind = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sluitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Voorspelling = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Actueel.SuspendLayout();
             this.Trend.SuspendLayout();
@@ -82,7 +82,7 @@
             this.tabControl1.Location = new System.Drawing.Point(-5, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(619, 500);
+            this.tabControl1.Size = new System.Drawing.Size(554, 430);
             this.tabControl1.TabIndex = 0;
             // 
             // Actueel
@@ -97,14 +97,23 @@
             this.Actueel.Location = new System.Drawing.Point(4, 25);
             this.Actueel.Name = "Actueel";
             this.Actueel.Padding = new System.Windows.Forms.Padding(3);
-            this.Actueel.Size = new System.Drawing.Size(611, 471);
+            this.Actueel.Size = new System.Drawing.Size(546, 401);
             this.Actueel.TabIndex = 0;
             this.Actueel.Text = "Actueel";
+            // 
+            // Voorspelling
+            // 
+            this.Voorspelling.AutoSize = true;
+            this.Voorspelling.Location = new System.Drawing.Point(255, 79);
+            this.Voorspelling.Name = "Voorspelling";
+            this.Voorspelling.Size = new System.Drawing.Size(86, 17);
+            this.Voorspelling.TabIndex = 11;
+            this.Voorspelling.Text = "Voorspelling";
             // 
             // plaats
             // 
             this.plaats.AutoSize = true;
-            this.plaats.Location = new System.Drawing.Point(28, 79);
+            this.plaats.Location = new System.Drawing.Point(52, 79);
             this.plaats.Name = "plaats";
             this.plaats.Size = new System.Drawing.Size(47, 17);
             this.plaats.TabIndex = 10;
@@ -122,7 +131,7 @@
             // Wind
             // 
             this.Wind.AutoSize = true;
-            this.Wind.Location = new System.Drawing.Point(28, 212);
+            this.Wind.Location = new System.Drawing.Point(52, 201);
             this.Wind.Name = "Wind";
             this.Wind.Size = new System.Drawing.Size(52, 17);
             this.Wind.TabIndex = 8;
@@ -131,7 +140,7 @@
             // Luchtvochtigheid
             // 
             this.Luchtvochtigheid.AutoSize = true;
-            this.Luchtvochtigheid.Location = new System.Drawing.Point(23, 168);
+            this.Luchtvochtigheid.Location = new System.Drawing.Point(52, 164);
             this.Luchtvochtigheid.Name = "Luchtvochtigheid";
             this.Luchtvochtigheid.Size = new System.Drawing.Size(127, 17);
             this.Luchtvochtigheid.TabIndex = 7;
@@ -140,7 +149,7 @@
             // Tempera
             // 
             this.Tempera.AutoSize = true;
-            this.Tempera.Location = new System.Drawing.Point(23, 125);
+            this.Tempera.Location = new System.Drawing.Point(48, 124);
             this.Tempera.Name = "Tempera";
             this.Tempera.Size = new System.Drawing.Size(102, 17);
             this.Tempera.TabIndex = 6;
@@ -153,7 +162,7 @@
             this.Trend.Location = new System.Drawing.Point(4, 25);
             this.Trend.Name = "Trend";
             this.Trend.Padding = new System.Windows.Forms.Padding(3);
-            this.Trend.Size = new System.Drawing.Size(611, 471);
+            this.Trend.Size = new System.Drawing.Size(546, 401);
             this.Trend.TabIndex = 1;
             this.Trend.Text = "Trend";
             // 
@@ -163,13 +172,13 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(88, 50);
+            this.chart1.Location = new System.Drawing.Point(13, 50);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(646, 388);
+            this.chart1.Size = new System.Drawing.Size(523, 302);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             // 
@@ -188,7 +197,7 @@
             this.Opties.Location = new System.Drawing.Point(4, 25);
             this.Opties.Name = "Opties";
             this.Opties.Padding = new System.Windows.Forms.Padding(3);
-            this.Opties.Size = new System.Drawing.Size(611, 471);
+            this.Opties.Size = new System.Drawing.Size(546, 401);
             this.Opties.TabIndex = 2;
             this.Opties.Text = "Opties";
             // 
@@ -344,27 +353,19 @@
             this.timer1.Interval = 60;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Voorspelling
-            // 
-            this.Voorspelling.AutoSize = true;
-            this.Voorspelling.Location = new System.Drawing.Point(255, 79);
-            this.Voorspelling.Name = "Voorspelling";
-            this.Voorspelling.Size = new System.Drawing.Size(86, 17);
-            this.Voorspelling.TabIndex = 11;
-            this.Voorspelling.Text = "Voorspelling";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(601, 493);
+            this.ClientSize = new System.Drawing.Size(436, 337);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weerstation van Mark Benjamins";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.Actueel.ResumeLayout(false);
             this.Actueel.PerformLayout();

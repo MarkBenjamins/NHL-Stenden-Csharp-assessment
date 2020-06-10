@@ -17,7 +17,9 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
     public partial class Form1 : Form
     {
+        // Var voor de default interval
         int interval = 60;
+        // var voor de default plaats
         string cityName = "Emmen";
 
         public Form1()
@@ -131,7 +133,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             return WindString;
         }
 
-        // icon rechts onder in (tray icon)
+    // icon rechts onder in (tray icon)
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
@@ -167,18 +169,20 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // als je op X drukt sluit de applicatie maar hij blijft aan staan.
+            // als je op X drukt sluit de applicatie maar hij blijft aan staan
             e.Cancel = true;
             Visible = false;
         }
 
         private void verversenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // ververs de pagina handmatig
             GetWeather(cityName);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // als je een setting aanpast veranderd alles aan de hand hiervan
             this.cityName = inputPlaats.Text;
             this.interval = int.Parse(inputInterval.Text);
             GetWeather(cityName);
@@ -187,7 +191,13 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // met de interval pas je de data aan
             GetWeather(cityName);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -18,22 +18,6 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
-/*            NotifyIcon notifyIcon = new NotifyIcon();
-            notifyIcon.Text = "Weer applicatie C#";
-            notifyIcon.ContextMenuStrip;
-
-            BaseProgram baseProgram = new BaseProgram();
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            contextMenuStrip.Items.Add("Huidige temperatuur", null, baseProgram.Navigate("Huidige temperatuur"));*/
         }
     }
-
-/*    class BaseProgram
-    {
-        internal EventHandler Navigate(string nav)
-        {
-            return ;
-        }
-    }*/
 }
