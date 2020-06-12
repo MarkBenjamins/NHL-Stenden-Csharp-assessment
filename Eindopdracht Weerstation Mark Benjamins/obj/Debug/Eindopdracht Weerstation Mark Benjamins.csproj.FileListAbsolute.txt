@@ -25,3 +25,26 @@ C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdra
 C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Newtonsoft.Json.dll
 C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Newtonsoft.Json.xml
 C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\obj\Debug\Eindopdracht Weerstation Mark Benjamins.csproj.CopyComplete
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\BouncyCastle.Crypto.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Google.Protobuf.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\K4os.Compression.LZ4.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\K4os.Hash.xxHash.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\MySql.Data.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Renci.SshNet.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Buffers.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Memory.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Numerics.Vectors.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Ubiety.Dns.Core.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Zstandard.Net.dll
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Google.Protobuf.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\K4os.Compression.LZ4.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\K4os.Hash.xxHash.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\MySql.Data.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\Renci.SshNet.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Buffers.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Memory.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Numerics.Vectors.xml
+C:\xampp\htdocs\Eindopdracht Weerstation Mark Benjamins\eindopdrachtC-\Eindopdracht Weerstation Mark Benjamins\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

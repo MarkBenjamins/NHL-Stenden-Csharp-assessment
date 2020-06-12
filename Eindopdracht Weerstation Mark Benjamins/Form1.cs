@@ -12,6 +12,7 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Timers;
+using System.Data.SqlClient;
 
 namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
@@ -20,7 +21,8 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
         // Var voor de default interval
         int interval = 60;
         // var voor de default plaats
-        string cityName = "Emmen";
+        string cityName = "Nieuweroord";
+        string unit = "metric";
 
         public Form1()
         {
@@ -30,21 +32,24 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             Thread.Sleep(5000);
 
             // load defauld form
-            InitializeComponent();
+            this.InitializeComponent();
 
             // laad icon in taskbar
-            ShowInTaskbar = true;
+            this.ShowInTaskbar = true;
 
             // laat de weersvoorspelling
-            GetWeather(cityName);
+            this.GetWeather(cityName);
+
+            // laat de voorspelling in de chart
+            this.GetForecast(cityName);
 
             // start timer interval
-            timer1.Interval = interval * 1000;
+            this.timer1.Interval = interval * 1000;
 
             // stelt input gelijk aan de var
-            inputInterval.Text = string.Format("{0}", interval);
+            this.inputInterval.Text = string.Format("{0}", interval);
             // steld city name gelijk aan de var
-            inputPlaats.Text = string.Format("{0}", cityName);
+            this.inputPlaats.Text = string.Format("{0}", cityName);
 
             //stop splash screen
             t.Abort();
@@ -55,7 +60,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             Application.Run(new SplashScreen());
         }
 
-        void GetWeather(string city)
+    void GetWeather(string city)
         {
             using (WebClient web = new WebClient())
             {
@@ -68,12 +73,12 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
                 double Temp = 0.0;
                 string Symbol = "";
-                if (C.Checked == true)
+                if (this.C.Checked == true)
                 {
                     Temp = output.main.temp;
                     Symbol = "°C";
                 }
-                else if (F.Checked == true)
+                else if (this.F.Checked == true)
                 {
                     Temp = output.main.temp * 1.8 + 32;
                     Symbol = "°F";
@@ -84,13 +89,182 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                     Symbol = "Error";
                 }
 
-                plaats.Text = string.Format("{0}, {1}", output.name, output.sys.country);
-                Tempera.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
-                Luchtvochtigheid.Text = string.Format("Luchtvochtigheid: {0} %", output.main.humidity);
-                Wind.Text = string.Format("Wind: {0} met {1} Km/h", WindDir, output.wind.speed);
-                time.Text = string.Format("[Last update] {0:HH:mm:ss}", updateTime);
-                timer1.Interval = interval * 1000;
-                huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
+                this.plaats.Text = string.Format("{0}, {1}", output.name, output.sys.country);
+                this.Tempera.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
+                this.Luchtvochtigheid.Text = string.Format("Luchtvochtigheid: {0} %", output.main.humidity);
+                this.Wind.Text = string.Format("Wind: {0} met {1} Km/h", WindDir, output.wind.speed);
+                this.time.Text = string.Format("[Last update] {0:HH:mm:ss}", updateTime);
+                this.timer1.Interval = interval * 1000;
+                this.huidigeTemperatuurToolStripMenuItem.Text = string.Format("Temperatuur: {0} {1}", Temp, Symbol);
+                this.Voorspelling.Text = string.Format("{0}", output.weather[0].description);
+                var myImage = output.weather[0].icon;
+                this.pictureBox1.Image = (Image)Properties.Resources.ResourceManager.GetObject(myImage);
+
+            /// <summary>
+            /// ****************************************************************
+            ///                         Database connectie
+            /// ****************************************************************
+            /// </summary>
+
+                // Insert Into - query
+
+                // Initialize connection / command
+                MySql.Data.MySqlClient.MySqlConnection conn;
+                MySql.Data.MySqlClient.MySqlCommand cmd;
+
+                conn = new MySql.Data.MySqlClient.MySqlConnection();
+                cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+                // Set connection / query
+                conn.ConnectionString = "server=localhost;uid=root;pwd=;database=csharp;";
+                string myquerystring =
+                    "INSERT INTO weerdata (plaats, temperatuur, tijdstip)" +
+                    "VALUES(@cityName, @Temp, @updateTime)";
+
+                // Check the connection and the query
+                try
+                {
+                    // Open the connection and execute command (query)
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = myquerystring;
+
+                    cmd.Parameters.AddWithValue("@cityName", cityName.ToString());
+                    cmd.Parameters.AddWithValue("@Temp", Temp.ToString());
+                    cmd.Parameters.AddWithValue("@updateTime", updateTime.ToString());
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Row Inserted into database successfully!",
+                    "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    // Close connection
+                    conn.Close();
+
+                }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    // Show error
+                    MessageBox.Show(ex.Message);
+                }
+
+                // Update - query
+                /*public void updateButton_Click(object sender, EventArgs e)
+                {
+                    // Initialize connection / command
+                    MySql.Data.MySqlClient.MySqlConnection conn;
+                    MySql.Data.MySqlClient.MySqlCommand cmd;
+
+                    conn = new MySql.Data.MySqlClient.MySqlConnection();
+                    cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+                    // Set connection / query
+                    conn.ConnectionString = "server=localhost;uid=root;pwd=;database=csharp;";
+                    string myquerystring =
+                        "UPDATE weerdata"+
+                        "SET plaats='@cityName', temperatuur='@Temp', tijdstip = '@updateTime'"+
+                        "WHERE id=1";
+
+
+                    // Check the connection and the query
+                    try
+                    {
+                        // Open the connection and execute command (query)
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.CommandText = myquerystring;
+
+                        cmd.Parameters.AddWithValue("@cityName", cityName.ToString());
+                        cmd.Parameters.AddWithValue("@Temp", Temp.ToString());
+                        cmd.Parameters.AddWithValue("@updateTime", updateTime.ToString());
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Row(s) updated successfully!",
+                        "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        // Close connection
+                        conn.Close();
+
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        // Show error
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+                // Delete From - query
+                public void deleteButton_Click(object sender, EventArgs e)
+                {
+                    // Initialize connection / command
+                    MySql.Data.MySqlClient.MySqlConnection conn;
+                    MySql.Data.MySqlClient.MySqlCommand cmd;
+
+                    conn = new MySql.Data.MySqlClient.MySqlConnection();
+                    cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+                    // Set connection / query
+                    conn.ConnectionString = "server=localhost;uid=root;pwd=;database=csharp;";
+                    string myquerystring =
+                        "DELETE FROM weerdata"+
+                        "WHERE name='Hoogeveen'";
+
+                    // Check the connection and the query
+                    try
+                    {
+                        // Open the connection and execute command (query)
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.CommandText = myquerystring;
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Row(s) deleted successfully!",
+                        "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        // Close connection
+                        conn.Close();
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        // Show error
+                        MessageBox.Show(ex.Message);
+                    }
+                }*/
+                ///
+                ///         Eind DB connectie
+                ///
+            }
+        }
+
+    void GetForecast(string city)
+        {
+            using (WebClient web = new WebClient())
+            {
+                string url = string.Format("http://api.openweathermap.org/data/2.5/forecast?q={0}&units={1}&appid=379ed7569bbd526bc8cd08d144c26fd7", city, unit);
+                var json = web.DownloadString(url);
+                var Object = JsonConvert.DeserializeObject<Forecast>(json);
+                Forecast forecast = Object;
+                DateTime LastUpdate = DateTime.Now;
+
+                string Symbol = "";
+                if (unit == "metric")
+                {
+                    Symbol = "°C";
+                }
+                else if (unit == "imperial")
+                {
+                    Symbol = "°F";
+                }
+                else
+                {
+                    Symbol = "Error Symbol";
+                }
+
+                chart1.Series["Temperatuur"].Points.Clear();
+                chart1.ChartAreas["ChartArea1"].AxisY.Title = string.Format("Temp {0}", Symbol);
+
+                for (int i = 1; i < 39; i++)
+                {
+                    int toAdd = i * 3;
+
+                    chart1.Series["Temperatuur"].Points.AddXY(LastUpdate.AddHours(toAdd).ToString("dd/MM HH:mm"),
+                        forecast.list[i].main.temp);
+                }
             }
         }
 
@@ -176,8 +350,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         private void verversenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // ververs de pagina handmatig
-            GetWeather(cityName);
+            this.GetWeather(cityName);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -185,19 +358,23 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             // als je een setting aanpast veranderd alles aan de hand hiervan
             this.cityName = inputPlaats.Text;
             this.interval = int.Parse(inputInterval.Text);
-            GetWeather(cityName);
-            tabControl1.SelectedIndex = 0;
+            this.GetWeather(cityName);
+            this.GetForecast(cityName);
+            this.tabControl1.SelectedIndex = 0;
+
+            if (F.Checked == true)
+            {
+                unit = "imperial";
+            }
+            else
+            {
+                unit = "metric";
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // met de interval pas je de data aan
-            GetWeather(cityName);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            this.GetWeather(cityName);
         }
     }
 }

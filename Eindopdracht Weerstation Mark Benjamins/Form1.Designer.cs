@@ -35,6 +35,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Actueel = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Voorspelling = new System.Windows.Forms.Label();
             this.plaats = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
@@ -64,6 +65,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.Actueel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Trend.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Opties.SuspendLayout();
@@ -79,15 +81,16 @@
             this.tabControl1.Controls.Add(this.Trend);
             this.tabControl1.Controls.Add(this.Opties);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tabControl1.Location = new System.Drawing.Point(-5, -1);
+            this.tabControl1.Location = new System.Drawing.Point(-5, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(554, 430);
+            this.tabControl1.Size = new System.Drawing.Size(518, 391);
             this.tabControl1.TabIndex = 0;
             // 
             // Actueel
             // 
             this.Actueel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Actueel.Controls.Add(this.pictureBox1);
             this.Actueel.Controls.Add(this.Voorspelling);
             this.Actueel.Controls.Add(this.plaats);
             this.Actueel.Controls.Add(this.time);
@@ -97,14 +100,22 @@
             this.Actueel.Location = new System.Drawing.Point(4, 25);
             this.Actueel.Name = "Actueel";
             this.Actueel.Padding = new System.Windows.Forms.Padding(3);
-            this.Actueel.Size = new System.Drawing.Size(546, 401);
+            this.Actueel.Size = new System.Drawing.Size(510, 362);
             this.Actueel.TabIndex = 0;
             this.Actueel.Text = "Actueel";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(35, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 98);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // Voorspelling
             // 
             this.Voorspelling.AutoSize = true;
-            this.Voorspelling.Location = new System.Drawing.Point(255, 79);
+            this.Voorspelling.Location = new System.Drawing.Point(205, 127);
             this.Voorspelling.Name = "Voorspelling";
             this.Voorspelling.Size = new System.Drawing.Size(86, 17);
             this.Voorspelling.TabIndex = 11;
@@ -113,7 +124,7 @@
             // plaats
             // 
             this.plaats.AutoSize = true;
-            this.plaats.Location = new System.Drawing.Point(52, 79);
+            this.plaats.Location = new System.Drawing.Point(36, 127);
             this.plaats.Name = "plaats";
             this.plaats.Size = new System.Drawing.Size(47, 17);
             this.plaats.TabIndex = 10;
@@ -122,7 +133,7 @@
             // time
             // 
             this.time.AutoSize = true;
-            this.time.Location = new System.Drawing.Point(320, 212);
+            this.time.Location = new System.Drawing.Point(205, 212);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(105, 17);
             this.time.TabIndex = 9;
@@ -131,7 +142,7 @@
             // Wind
             // 
             this.Wind.AutoSize = true;
-            this.Wind.Location = new System.Drawing.Point(52, 201);
+            this.Wind.Location = new System.Drawing.Point(36, 249);
             this.Wind.Name = "Wind";
             this.Wind.Size = new System.Drawing.Size(52, 17);
             this.Wind.TabIndex = 8;
@@ -140,7 +151,7 @@
             // Luchtvochtigheid
             // 
             this.Luchtvochtigheid.AutoSize = true;
-            this.Luchtvochtigheid.Location = new System.Drawing.Point(52, 164);
+            this.Luchtvochtigheid.Location = new System.Drawing.Point(36, 212);
             this.Luchtvochtigheid.Name = "Luchtvochtigheid";
             this.Luchtvochtigheid.Size = new System.Drawing.Size(127, 17);
             this.Luchtvochtigheid.TabIndex = 7;
@@ -149,7 +160,7 @@
             // Tempera
             // 
             this.Tempera.AutoSize = true;
-            this.Tempera.Location = new System.Drawing.Point(48, 124);
+            this.Tempera.Location = new System.Drawing.Point(32, 172);
             this.Tempera.Name = "Tempera";
             this.Tempera.Size = new System.Drawing.Size(102, 17);
             this.Tempera.TabIndex = 6;
@@ -162,23 +173,30 @@
             this.Trend.Location = new System.Drawing.Point(4, 25);
             this.Trend.Name = "Trend";
             this.Trend.Padding = new System.Windows.Forms.Padding(3);
-            this.Trend.Size = new System.Drawing.Size(546, 401);
+            this.Trend.Size = new System.Drawing.Size(510, 362);
             this.Trend.TabIndex = 1;
             this.Trend.Text = "Trend";
             // 
             // chart1
             // 
+            chartArea1.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.Title = "Datum";
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Stacked;
+            chartArea1.AxisY.Title = "Temperatuur";
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(13, 50);
+            this.chart1.Location = new System.Drawing.Point(6, 56);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Temperatuur";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(523, 302);
+            this.chart1.Size = new System.Drawing.Size(498, 300);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             // 
@@ -197,7 +215,7 @@
             this.Opties.Location = new System.Drawing.Point(4, 25);
             this.Opties.Name = "Opties";
             this.Opties.Padding = new System.Windows.Forms.Padding(3);
-            this.Opties.Size = new System.Drawing.Size(546, 401);
+            this.Opties.Size = new System.Drawing.Size(510, 362);
             this.Opties.TabIndex = 2;
             this.Opties.Text = "Opties";
             // 
@@ -222,7 +240,7 @@
             // 
             // inputInterval
             // 
-            this.inputInterval.Location = new System.Drawing.Point(138, 114);
+            this.inputInterval.Location = new System.Drawing.Point(73, 79);
             this.inputInterval.Name = "inputInterval";
             this.inputInterval.Size = new System.Drawing.Size(352, 22);
             this.inputInterval.TabIndex = 9;
@@ -232,7 +250,7 @@
             // 
             this.C.AutoSize = true;
             this.C.Checked = true;
-            this.C.Location = new System.Drawing.Point(166, 158);
+            this.C.Location = new System.Drawing.Point(103, 117);
             this.C.Name = "C";
             this.C.Size = new System.Drawing.Size(38, 21);
             this.C.TabIndex = 8;
@@ -243,7 +261,7 @@
             // F
             // 
             this.F.AutoSize = true;
-            this.F.Location = new System.Drawing.Point(222, 158);
+            this.F.Location = new System.Drawing.Point(166, 117);
             this.F.Name = "F";
             this.F.Size = new System.Drawing.Size(37, 21);
             this.F.TabIndex = 7;
@@ -253,7 +271,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(62, 158);
+            this.label6.Location = new System.Drawing.Point(13, 119);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 6;
@@ -262,7 +280,7 @@
             // intervaltext
             // 
             this.intervaltext.AutoSize = true;
-            this.intervaltext.Location = new System.Drawing.Point(62, 114);
+            this.intervaltext.Location = new System.Drawing.Point(13, 79);
             this.intervaltext.Name = "intervaltext";
             this.intervaltext.Size = new System.Drawing.Size(54, 17);
             this.intervaltext.TabIndex = 5;
@@ -271,7 +289,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 76);
+            this.label4.Location = new System.Drawing.Point(13, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 4;
@@ -279,7 +297,7 @@
             // 
             // inputPlaats
             // 
-            this.inputPlaats.Location = new System.Drawing.Point(138, 76);
+            this.inputPlaats.Location = new System.Drawing.Point(73, 43);
             this.inputPlaats.Name = "inputPlaats";
             this.inputPlaats.Size = new System.Drawing.Size(352, 22);
             this.inputPlaats.TabIndex = 3;
@@ -358,17 +376,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(436, 337);
+            this.ClientSize = new System.Drawing.Size(506, 386);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weerstation van Mark Benjamins";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.Actueel.ResumeLayout(false);
             this.Actueel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Trend.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.Opties.ResumeLayout(false);
@@ -383,19 +401,10 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Actueel;
         private System.Windows.Forms.TabPage Trend;
-        private System.Windows.Forms.TabPage Opties;
         private System.Windows.Forms.Label Wind;
         private System.Windows.Forms.Label Luchtvochtigheid;
         private System.Windows.Forms.Label Tempera;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Label intervaltext;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox inputPlaats;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox inputInterval;
-        private System.Windows.Forms.RadioButton C;
-        private System.Windows.Forms.RadioButton F;
         private System.Windows.Forms.Label time;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -405,10 +414,20 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sluitToolStripMenuItem;
         private System.Windows.Forms.Label plaats;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem verversenToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label Voorspelling;
+        private System.Windows.Forms.TabPage Opties;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox inputInterval;
+        private System.Windows.Forms.RadioButton C;
+        private System.Windows.Forms.RadioButton F;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label intervaltext;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox inputPlaats;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

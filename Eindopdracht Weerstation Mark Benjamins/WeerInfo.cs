@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Resources;
 
 namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
@@ -16,8 +17,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         public class weather
         {
-            public int id { get; set; }
-            public string main { get; set; }
+            public string icon { get; set; }
             public string description { get; set; }
         }
 
@@ -46,7 +46,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             public double dt { get; set; }
             public wind wind { get; set; }
             public main main { get; set; }
-            public List<weather> weatherList { get; set; }
+            public List<weather> weather { get; set; }
             public coord coord { get; set; }
         }
     }
