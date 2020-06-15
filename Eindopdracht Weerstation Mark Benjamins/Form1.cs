@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Timers;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Eindopdracht_Weerstation_Mark_Benjamins
 {
@@ -53,6 +54,9 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
             //stop splash screen
             t.Abort();
+
+            //Get infomation out DB
+            this.DBplaceholder();
         }
 
         public void startSplashScreen()
@@ -114,7 +118,11 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
                 conn = new MySql.Data.MySqlClient.MySqlConnection();
                 cmd = new MySql.Data.MySqlClient.MySqlCommand();
-
+                double toAdd = Temp;
+                if (unit == "imperial")
+                {
+                    toAdd = ((toAdd * 1.8) + 32);
+                }
                 // Set connection / query
                 conn.ConnectionString = "server=localhost;uid=root;pwd=;database=csharp;";
                 string myquerystring =
@@ -130,7 +138,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                     cmd.CommandText = myquerystring;
 
                     cmd.Parameters.AddWithValue("@cityName", cityName.ToString());
-                    cmd.Parameters.AddWithValue("@Temp", Temp.ToString());
+                    cmd.Parameters.AddWithValue("@Temp", toAdd);
                     cmd.Parameters.AddWithValue("@updateTime", updateTime.ToString());
 
                     cmd.ExecuteNonQuery();
@@ -138,7 +146,6 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     // Close connection
                     conn.Close();
-
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
@@ -225,9 +232,9 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                         MessageBox.Show(ex.Message);
                     }
                 }*/
-                ///
-                ///         Eind DB connectie
-                ///
+            ///
+            ///         Eind DB connectie
+            ///
             }
         }
 
@@ -240,6 +247,25 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                 var Object = JsonConvert.DeserializeObject<Forecast>(json);
                 Forecast forecast = Object;
                 DateTime LastUpdate = DateTime.Now;
+            }
+        }
+
+        public void DBplaceholder()
+        {
+            MySqlConnection conn = new MySqlConnection();
+
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+
+            conn.ConnectionString = "server=localhost;uid=root;pwd=;database=csharp;";
+
+            string query =
+                    "SELECT temperatuur, tijdstip FROM weerdata WHERE plaats = @cityName";
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@cityName", cityName.ToString());
+                MySqlDataReader Datareader = cmd.ExecuteReader();
 
                 string Symbol = "";
                 if (unit == "metric")
@@ -258,13 +284,18 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
                 chart1.Series["Temperatuur"].Points.Clear();
                 chart1.ChartAreas["ChartArea1"].AxisY.Title = string.Format("Temp {0}", Symbol);
 
-                for (int i = 1; i < 39; i++)
+                while (Datareader.Read())
                 {
-                    int toAdd = i * 3;
-
-                    chart1.Series["Temperatuur"].Points.AddXY(LastUpdate.AddHours(toAdd).ToString("dd/MM HH:mm"),
-                        forecast.list[i].main.temp);
+                    chart1.Series["Temperatuur"].Points.AddXY(Datareader.GetString(1), Datareader.GetInt32(0));
                 }
+
+                Datareader.Close();
+                conn.Close();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                // Show error
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -350,6 +381,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
 
         private void verversenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // verversen
             this.GetWeather(cityName);
         }
 
@@ -361,6 +393,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
             this.GetWeather(cityName);
             this.GetForecast(cityName);
             this.tabControl1.SelectedIndex = 0;
+            this.DBplaceholder();
 
             if (F.Checked == true)
             {
@@ -375,6 +408,7 @@ namespace Eindopdracht_Weerstation_Mark_Benjamins
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.GetWeather(cityName);
+            this.DBplaceholder();
         }
     }
 }
